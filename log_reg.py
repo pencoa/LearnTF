@@ -4,6 +4,7 @@ This example is using the Titanic survival information
 (https://www.kaggle.com/c/titanic/data?train.csv)
 Typer: Randy Pen
 Project: https://github.com/pencoa/LearnTF
+Reference: TensorFlow For Machine Intelligence
 '''
 
 import tensorflow as tf
@@ -22,7 +23,7 @@ def loss(X, Y):
     return tf.reduce_mean(tf.nn.sigmoid_cross_entropy_with_logits(combine_input(X), Y))
 
 def read_csv(batch_size, file_name, record_defaults):
-    filename_queue = tf.train.string_input_producer([os.path.dirname(__file__) + "/" + file_name])
+    filename_queue = tf.train.string_input_producer([os.path.join(os.getcwd(), file_name)])
 
     reader = tf.TextLineReader(skip_header_lines=1)
     key, value = reader.read(filename_queue)
